@@ -20,14 +20,5 @@ class Book (ABC):
         else:
             return False
         
-    def print_data(self):
-        print(f"Title: {self.title}")
-        print(f"Author: {self.author}")
-        print(f"Genre: {self.genre}")
-        print(f"Pages: {self.pages}")
-        print(f"Publish year: {self.year}")
-        print(f"Available: {'Yes' if self.available else 'No'}")
-        print(f"Popularity: {self.calculate_popularity()}")
-        print(f"Old: {'Yes' if self.is_old() else 'No'}")
-        print("------------------------")
-        
+    def is_available(self):
+        return self.available    

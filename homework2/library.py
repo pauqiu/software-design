@@ -45,3 +45,14 @@ class Library:
                 availables += 1
 
         return availables
+    
+    def print_book(self, book):
+        print(f"Title: {book.title}")
+        print(f"Author: {book.author}")
+        print(f"Genre: {book.genre}")
+        print(f"Pages: {book.pages}")
+        print(f"Publish year: {book.year}")
+        print(f"Available: {'Yes' if book.available else 'No'}")
+        print(f"Popularity: {book.calculate_popularity()}")
+        print(f"Old: {'Yes' if book.is_old() else 'No'}")
+        print("------------------------")

@@ -11,7 +11,7 @@ class Report:
 
         for b in self.lib.books:
             total_popularity = 0
-            b.print_data()
+            self.lib.print_book(b)
             total_popularity += (b.calculate_popularity())
 
         print("\nREPORTE BIBLIOTECA:")
