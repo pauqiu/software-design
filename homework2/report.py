@@ -1,15 +1,16 @@
 from library import Library
 
 class Report:
-    def __init__(self):
-        pass
+    def __init__(self, lib):
+        self.lib = lib
 
     def generate_report(self):
-        total = len(Library.count_books())
-        antiguos = Library.count_old_books()
-        disponibles = Library.count_available_books()
+        total = self.lib.count_books()
+        antiguos = self.lib.count_old_books()
+        disponibles = self.lib.count_available_books()
 
-        for b in Library.books:
+        for b in self.lib.books:
+            total_popularity = 0
             b.print_data()
             total_popularity += (b.calculate_popularity())
 

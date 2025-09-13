@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Libro (ABC):
+class Book (ABC):
     def __init__(self, author, title, genre, pages, year, available=True):
         self.title = title
         self.author = author
@@ -21,13 +21,13 @@ class Libro (ABC):
             return False
         
     def print_data(self):
-        print(f"Título: {self.titulo}")
-        print(f"Autor: {self.autor}")
-        print(f"Género: {self.genero}")
-        print(f"Páginas: {self.paginas}")
-        print(f"Año: {self.anio_publicacion}")
-        print(f"Disponible: {'Sí' if self.disponible else 'No'}")
-        print(f"Popularidad: {self.calcular_popularidad()}")
-        print(f"Es antiguo: {'Sí' if self.es_antiguo() else 'No'}")
+        print(f"Title: {self.title}")
+        print(f"Author: {self.author}")
+        print(f"Genre: {self.genre}")
+        print(f"Pages: {self.pages}")
+        print(f"Publish year: {self.year}")
+        print(f"Available: {'Yes' if self.available else 'No'}")
+        print(f"Popularity: {self.calculate_popularity()}")
+        print(f"Old: {'Yes' if self.is_old() else 'No'}")
         print("------------------------")
         

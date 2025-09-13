@@ -1,12 +1,21 @@
-from book import Book
+from history_book import HistoryBook
+from novel_book import NovelBook
+from science_book import ScienceBook
 
 class Library:
     def __init__(self): 
         self.books = []
 
     def add_book(self, title, author, genre, pages, year) :
-        recent_book = Book(title, author, genre, pages, year)
-        self.libros.append(recent_book)
+
+        if genre.lower() == "novel":
+            recent_book = NovelBook(title, author, genre, pages, year)
+        elif genre.lower() == "science":
+            recent_book = ScienceBook(title, author, genre, pages, year)
+        elif genre.lower() == "history":
+            recent_book = HistoryBook(title, author, genre, pages, year)
+
+        self.books.append(recent_book)
         print("Book registered!")
 
     def ask_information(self):
@@ -22,6 +31,7 @@ class Library:
         return len(self.books)
     
     def count_old_books(self):
+        olds = 0
         for b in self.books:
             if b.is_old():
                 olds += 1
@@ -29,6 +39,7 @@ class Library:
         return olds
             
     def count_available_books(self):
+        availables = 0
         for b in self.books:
             if b.available:
                 availables += 1
