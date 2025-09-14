@@ -43,3 +43,4 @@ Las principios que se tomaron en cuenta para estas mejoras fueron:
 - OOP: Se hizo uso de la herencia para el manejo de los libros.
 
 ## Link al repositorio
+> https://github.com/pauqiu/software-design
