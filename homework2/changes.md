@@ -41,3 +41,6 @@ Las principios que se tomaron en cuenta para estas mejoras fueron:
 - KISS: Se tomó en cuenta al moduralizar los métodos.
 - DRY: Se consideró a la hora de manejar los libros dependiendo de su género.
 - OOP: Se hizo uso de la herencia para el manejo de los libros.
+
+## Link al repositorio
+> https://github.com/pauqiu/software-design
