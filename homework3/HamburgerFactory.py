@@ -18,17 +18,17 @@ class Hamburger:
         if self.cheese: ingredients.append("Cheese")
         return "Hamburger with " + ", ".join(ingredients)
 
-class HamburgerFactory:
+class HamburgerFactory():
     def __init__(self):
-        self.orders = []
+        pass
 
     def create_order(self):
         lettuce = random.choice([True, False])
         tomato = random.choice([True, False])
         cheese = random.choice([True, False])
-        burger = Hamburger(lettuce=lettuce, tomato=tomato, cheese=cheese)        
-        self.orders.append(burger)
+        burger = Hamburger(lettuce=lettuce, tomato=tomato, cheese=cheese)
+        return burger
 
-    def make_hamburger(self, burger, delay=1):
-        time.sleep(delay)
+    def make_order(self, burger):
+        time.sleep(1)
         print(f"Made: {burger}")

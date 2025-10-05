@@ -1,6 +1,4 @@
 import threading
-#from HamburgerFactory import HamburgerFactory
-#from PizzaFactory import PizzaFactory
 
 class FoodService:
     def __init__(self) -> None:
@@ -10,5 +8,5 @@ class FoodService:
         self.orders.append(order)
 
     def process_orders(self):
-        # this is where threads execute
-        pass
+        for order in self.orders:
+            order.make_order()
