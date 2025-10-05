@@ -16,9 +16,11 @@ def main():
 
     # Pizza factory class
     pizza_factory = PizzaFactory()
-    for i in range(6):
+    for i in range(3):
         order = pizza_factory.create_order()
-        service.add_order(Order(burger_factory, order))
+        service.add_order(Order(pizza_factory, order))
 
     service.process_orders()
     
+if __name__ == "__main__":
+    main()
