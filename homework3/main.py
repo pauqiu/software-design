@@ -20,7 +20,7 @@ def main():
         order = pizza_factory.create_order()
         service.add_order(Order(pizza_factory, order))
 
-    service.process_orders()
+    service.start_working()
     
 if __name__ == "__main__":
     main()

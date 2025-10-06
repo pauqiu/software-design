@@ -1,12 +1,44 @@
 import threading
+import queue
 
 class FoodService:
     def __init__(self) -> None:
         self.orders = []
+        self.threads = []
 
     def add_order(self, order):
         self.orders.append(order)
 
-    def process_orders(self):
-        for order in self.orders:
-            order.make_order()
+    def deactivate_threads(self):
+        for t in self.threads:
+            t.join()
+
+    def start_working(self):
+        # Thread-safe queue for dynamically splitting tasks
+        tasks = queue.Queue()
+        for item in self.orders:
+            tasks.put(item)
+
+        # Setting up two threads
+        for i in range (2):
+            t = threading.Thread(target=self.process_orders, args=(tasks,))
+            t.start()
+            self.threads.append(t)
+
+        # This method waits for all tasks to be taken out of the queue
+        tasks.join()
+        
+        self.deactivate_threads()
+
+    def process_orders(self, tasks):
+        while True:
+            # Check if there are tasks left in the queue
+            try:
+                item = tasks.get(timeout=1)
+                item.make_order()
+
+                # Signal completed task
+                tasks.task_done()
+            except queue.Empty:
+                break
+        
