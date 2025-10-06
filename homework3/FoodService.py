@@ -21,14 +21,16 @@ class FoodService:
 
         # Setting up two threads
         for i in range (2):
-            t = threading.Thread(target=self.process_orders, args=(tasks,))
-            t.start()
-            self.threads.append(t)
+            cook = threading.Thread(target=self.process_orders, args=(tasks,))
+            cook.start()
+            self.threads.append(cook)
 
         # This method waits for all tasks to be taken out of the queue
         tasks.join()
-        
+
         self.deactivate_threads()
+
+        print("[System] All tasks are done and all cooks went home!")
 
     def process_orders(self, tasks):
         while True:

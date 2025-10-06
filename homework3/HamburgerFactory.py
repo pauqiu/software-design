@@ -1,5 +1,8 @@
 import random
 import time
+import threading
+
+print_lock = threading.Lock()
 
 class Hamburger:
     def __init__(self, bun=True, patty=True, lettuce=False, tomato=False, cheese=False):
@@ -31,4 +34,5 @@ class HamburgerFactory():
 
     def make_order(self, burger):
         time.sleep(1)
-        print(f"Made: {burger}")
+        with print_lock:
+            print(f"[{threading.current_thread().name}] made: {burger}")

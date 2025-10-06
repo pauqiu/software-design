@@ -10,7 +10,7 @@ def main():
     # Hamburger factory class
     burger_factory = HamburgerFactory()
 
-    for i in range(3):
+    for i in range(2):
         order = burger_factory.create_order()
         service.add_order(Order(burger_factory, order))
 

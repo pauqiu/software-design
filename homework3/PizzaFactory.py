@@ -1,5 +1,8 @@
 import random
 import time
+import threading
+
+print_lock = threading.Lock()
 
 class Pizza:
     def __init__(self, pizza_type):
@@ -18,7 +21,9 @@ class PizzaFactory():
         return pizza
 
     def make_order(self, pizza):
-        print(f"Baking {pizza.pizza_type} pizza...")
+        with print_lock:
+            print(f"[{threading.current_thread().name}] baking {pizza.pizza_type} pizza...")
         time.sleep(1)
         pizza.baked = True
-        print(f"{pizza.pizza_type} pizza is ready!")
+        with print_lock:
+            print(f"[{threading.current_thread().name}] {pizza.pizza_type} pizza is ready!")
