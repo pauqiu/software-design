@@ -10,7 +10,7 @@ from src.models.electric_power_up import ElectricPowerUp
 class TestPowerUp(unittest.TestCase):
 
     def test_power_up_modifies_damage(self):
-        """Test que el daño base es diferente al del power up"""
+        """Test que el daño base sea diferente al del power up"""
         mock_calculator = MagicMock()
         mock_calculator.check_critical_hit.return_value = False
         
