@@ -9,7 +9,10 @@ class CombatSystem(ICombatSystem):
         if not target.is_alive:
             return f"{target.name} ya está derrotado"
         
-        result = weapon.attack(attacker, target)
+        damage, result = weapon.attack(attacker, target)
+        target.take_damage(damage)
+        result += f"causando {damage} de daño"
+
         critical = self.damage_calculator.check_critical_hit()
         
         if critical:
