@@ -1,3 +1,6 @@
 fn main() {
-    println!("Hello, world!");
+    
+    // Adding clients and orders
+
+    
 }

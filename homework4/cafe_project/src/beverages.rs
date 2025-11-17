@@ -54,7 +54,7 @@ impl Beverage for GreenTea {
     }
 }
 
-struct ChamonilleTea
+struct ChamonilleTea;
 
 impl Beverage for ChamonilleTea {
     fn prepare(&self) {
@@ -62,7 +62,7 @@ impl Beverage for ChamonilleTea {
     }
 }
 
-struct Matcha
+struct Matcha;
 
 impl Beverage for Matcha {
     fn prepare(&self) {
