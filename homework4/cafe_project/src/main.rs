@@ -26,8 +26,7 @@ fn main() {
     orders.push(create_order("Paul", "Food",
                  "Toast", &["Strawberry"], waiter));
 
-    println!("Zelda ordered a donut filled with strawberry jam and 
-                pastry cream");
+    println!("Zelda ordered a donut filled with strawberry jam and pastry cream");
     orders.push(create_order("Zelda", "Food",
                  "Donut", &["Strawberry", "Pastry"], 
                  waiter));
@@ -36,7 +35,26 @@ fn main() {
     orders.push(create_order("Rodión", "Food",
                  "Muffin", &["Chocolate"], waiter));
 
+    println!("Annie ordered an espresso with vanilla extra");
+    orders.push(create_order("Annie", "Beverage",
+                 "Espresso", &["Vanilla"], waiter));
+
+    println!("Bulma ordered a matcha with milk, honey and vanilla");
+    orders.push(create_order("Bulma", "Beverage",
+                 "Matcha", &["Milk", "Honey", "Vanilla"], 
+                 waiter));
+
+    println!("----------------------------");
+
     cafe.process_orders(&orders);
+
+    /* 
+        It always beats me how to coherently print of the components when
+        implementing decorator. 
+        And trying it while learning Rust wasn't that fun.
+        At least it works :,)
+    */
+
 }
 
 /*

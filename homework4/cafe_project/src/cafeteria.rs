@@ -16,7 +16,9 @@ impl Cafeteria {
         for order in orders {
             if order.product_type == "Food" {
                 self.cook(order);
-            } 
+            } else if order.product_type == "Beverage" {
+                self.brew(order);
+            }
         }
 
     }
@@ -46,6 +48,38 @@ impl Cafeteria {
             "Strawberry" => Box::new(StrawberryJamDecorator { food: base_product }),
             "Peanut" => Box::new(PeanutButterDecorator { food: base_product }),
             _ => base_product,
+        }
+    }
+
+    fn brew(&self, order: &Order) {
+
+        let mut base_beverage: Box<dyn Beverage> = match order.base {
+            "Coffee" => Box::new(Coffee),
+            "Latte" => Box::new(Latte),
+            "Espresso" => Box::new(Espresso),
+            "HotChocolate" => Box::new(HotChocolate),
+            "GreenTea" => Box::new(GreenTea),
+            _ => Box::new(Coffee), // fallback
+        };
+
+        for extra in order.toppings {
+            base_beverage = self.add_beverage_extras(base_beverage, extra);
+        }
+
+        let result = base_beverage.prepare();
+
+        order.ring_bell(&order.client.to_string(), &result);
+    }
+
+    fn add_beverage_extras(&self, base_beverage: Box<dyn Beverage>, extra: &str) -> Box<dyn Beverage> {
+
+        match extra {
+            "Milk" => Box::new(MilkDecorator { beverage: base_beverage }),
+            "Sugar" => Box::new(SugarDecorator { beverage: base_beverage }),
+            "Cinnamon" => Box::new(CinnamonDecorator { beverage: base_beverage }),
+            "Vanilla" => Box::new(VanillaDecorator { beverage: base_beverage }),
+            "Honey" => Box::new(HoneyDecorator { beverage: base_beverage }),
+            _ => base_beverage,
         }
     }
 

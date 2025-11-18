@@ -7,51 +7,51 @@ use crate::beverages::Beverage;
     -----------------------------
 */
 
-pub struct MilkDecorator<T: Beverage> {
-    pub beverage: T
+pub struct MilkDecorator {
+    pub beverage: Box<dyn Beverage>
 }
 
-impl<T: Beverage> Beverage for MilkDecorator<T> {
+impl Beverage for MilkDecorator {
     fn prepare(&self) -> String {
         format!("{} with milk; ", self.beverage.prepare())
     }
 }
 
-pub struct SugarDecorator<T: Beverage> {
-    pub beverage: T
+pub struct SugarDecorator {
+    pub beverage: Box<dyn Beverage>
 }
 
-impl<T: Beverage> Beverage for SugarDecorator<T> {
+impl Beverage for SugarDecorator {
     fn prepare(&self) -> String {
         format!("{} with sugar; ", self.beverage.prepare())
     }
 }
 
-pub struct CinnamonDecorator<T: Beverage> {
-    beverage: T
+pub struct CinnamonDecorator {
+    pub beverage: Box<dyn Beverage>
 }
 
-impl<T: Beverage> Beverage for CinnamonDecorator<T> {
+impl Beverage for CinnamonDecorator {
     fn prepare(&self) -> String {
         format!("{} with cinnamon; ", self.beverage.prepare())
     }
 }
 
-pub struct VanillaDecorator<T: Beverage> {
-    beverage: T
+pub struct VanillaDecorator {
+    pub beverage: Box<dyn Beverage>
 }
 
-impl<T: Beverage> Beverage for VanillaDecorator<T> {
+impl Beverage for VanillaDecorator {
     fn prepare(&self) -> String{
         format!("{} with vanilla; ", self.beverage.prepare())
     }
 }
 
-pub struct HoneyDecorator<T: Beverage> {
-    beverage: T
+pub struct HoneyDecorator {
+    pub beverage: Box<dyn Beverage>
 }
 
-impl<T: Beverage> Beverage for HoneyDecorator<T> {
+impl Beverage for HoneyDecorator {
     fn prepare(&self) -> String {
         format!("{} with honey; ", self.beverage.prepare())
     }
