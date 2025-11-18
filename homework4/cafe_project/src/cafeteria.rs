@@ -1,11 +1,11 @@
-
 use crate::food::{Food, Toast, Croissant, Muffin, Donut};
-use crate::beverages::{Beverage, Coffee, Espresso, HotChocolate, Latte, 
-                        GreenTea};
-use crate::food_decor::{ChocolateChipsDecorator, PastryCreamDecorator, 
-                        PeanutButterDecorator, StrawberryJamDecorator};
-use crate::beverage_decor::{MilkDecorator, SugarDecorator, CinnamonDecorator, 
-                            VanillaDecorator, HoneyDecorator};
+use crate::beverages::{Beverage, Coffee, Espresso, HotChocolate, Latte, GreenTea};
+use crate::food_decor::{
+    ChocolateChipsDecorator, PastryCreamDecorator, PeanutButterDecorator, StrawberryJamDecorator
+};
+use crate::beverage_decor::{
+    MilkDecorator, SugarDecorator, CinnamonDecorator, VanillaDecorator, HoneyDecorator
+};
 use crate::order::Order;
 
 pub struct Cafeteria;
@@ -22,24 +22,24 @@ impl Cafeteria {
     }
 
     fn cook(&self, order: &Order) {
-
-        let base_product: Box<dyn Food> = match order.base {
+        
+        let mut base_product: Box<dyn Food> = match order.base {
             "Toast" => Box::new(Toast),
             "Croissant" => Box::new(Croissant),
             "Muffin" => Box::new(Muffin),
             _ => Box::new(Donut),
         };
 
-        self.add_toppings(base_product, );
+        for topping in order.toppings {
+            base_product = self.add_toppings(base_product, topping);
+        }
 
         let result = base_product.prepare();
 
         order.ring_bell(&order.client.to_string(), &result);
-       
     }
 
     fn add_toppings(&self, base_product: Box<dyn Food>, topping: &str) -> Box<dyn Food> {
-
         match topping {
             "Chocolate" => Box::new(ChocolateChipsDecorator { food: base_product }),
             "Pastry" => Box::new(PastryCreamDecorator { food: base_product }),
