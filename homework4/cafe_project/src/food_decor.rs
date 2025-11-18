@@ -2,57 +2,47 @@
 use crate::food::Food;
 
 /*
-    ------------------------------
-            Base decorator
-    ------------------------------
-*/
-
-trait FoodDecorator: Food {
-    fn prepare(&self);
-}
-
-/*
     -----------------------------
         Concrete decorators
     -----------------------------
 */
 
-struct ChocolateChipsDecorator<T: Food> {
-    food: T
+pub struct ChocolateChipsDecorator {
+    pub food: Box<dyn Food>,
 }
 
-impl<T: Food> FoodDecorator for ChocolateChipsDecorator<T> {
-    fn prepare(&self) {
-        return self.food.prepare + " adding chocolate chips...";
+impl Food for ChocolateChipsDecorator {
+    fn prepare(&self) -> String {
+        format!("{} with chocolate chips; ", self.food.prepare())
     }
 }
 
-struct PeanutButterDecorator<T: Food> {
-    food: T
+pub struct PeanutButterDecorator {
+    pub food: Box<dyn Food>
 }
 
-impl<T: Food> FoodDecorator for PeanutButterDecorator<T> {
-    fn prepare(&self) {
-        return self.food.prepare + " adding peanut butter...";
+impl Food for PeanutButterDecorator {
+    fn prepare(&self) -> String {
+        format!("{} with peanut butter; ", self.food.prepare())
     }
 }
 
-struct PastryCreamDecorator<T: Food> {
-    food: T
+pub struct PastryCreamDecorator {
+    pub food: Box<dyn Food>
 }
 
-impl<T: Food> FoodDecorator for PastryCreamDecorator<T> {
-    fn prepare(&self) {
-        return self.food.prepare + " adding pastry cream...";
+impl Food for PastryCreamDecorator {
+    fn prepare(&self) -> String {
+        format!("{} with pastry cream; ", self.food.prepare())
     }
 }
 
-struct StrawberryJamDecorator<T: Food> {
-    food: T
+pub struct StrawberryJamDecorator {
+    pub food: Box<dyn Food>
 }
 
-impl<T: Food> FoodDecorator for StrawberryJamDecorator<T> {
-    fn prepare(&self) {
-        return self.food.prepare + " adding strawberry jam...";
+impl Food for StrawberryJamDecorator {
+    fn prepare(&self) -> String {
+        format!("{} with strawberry jam; ", self.food.prepare())
     }
 }

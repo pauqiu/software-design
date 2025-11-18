@@ -4,8 +4,8 @@
     ------------------------------
 */
 
-trait Beverage {
-    fn prepare(&self);
+pub trait Beverage {
+    fn prepare(&self) -> String;
 }
 
 /*
@@ -14,58 +14,50 @@ trait Beverage {
     -----------------------------
 */
 
-struct Coffee;
+pub struct Coffee;
 
 impl Beverage for Coffee {
-    fn prepare(&self) {
-        return "Brewing coffee...";
+    fn prepare(&self) -> String {
+        return "Coffee".to_string();
     }
 }
 
-struct Espresso;
+pub struct Espresso;
 
 impl Beverage for Espresso {
-    fn prepare(&self) {
-        return "Brewing espresso...";
+    fn prepare(&self) -> String {
+        return "Espresso".to_string();
     }
 }
 
-struct HotChocolate;
+pub struct HotChocolate;
 
 impl Beverage for HotChocolate {
-    fn prepare(&self) {
-        return "Brewing hot chocolate...";
+    fn prepare(&self) -> String {
+        return "Hot chocolate".to_string();
     }
 }
 
-struct Latte;
+pub struct Latte;
 
 impl Beverage for Latte {
-    fn prepare(&self) {
-        return "Brewing latte...";
+    fn prepare(&self) -> String {
+        return "Latte".to_string();
     }
 }
 
-struct GreenTea;
+pub struct GreenTea;
 
 impl Beverage for GreenTea {
-    fn prepare(&self) {
-        return "Brewing green tea...";
+    fn prepare(&self) -> String {
+        return "Green tea".to_string();
     }
 }
 
-struct ChamonilleTea;
-
-impl Beverage for ChamonilleTea {
-    fn prepare(&self) {
-        return "Brewing chamonille tea...";
-    }
-}
-
-struct Matcha;
+pub struct Matcha;
 
 impl Beverage for Matcha {
-    fn prepare(&self) {
-        return "Brewing matcha...";
+    fn prepare(&self) -> String {
+        return "Matcha".to_string();
     }
 }

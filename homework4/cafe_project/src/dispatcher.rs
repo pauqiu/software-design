@@ -5,15 +5,16 @@
     -------------------------
 */
 
-struct Dispatcher;
+#[derive(Copy, Clone)]
+pub struct Dispatcher;
 
 impl Dispatcher {
 
-    fn notify(&self, name: &String, product: &String) {
+    pub fn notify(&self, name: &String, product: &String) {
         self.announce_order(name, product);
     }
 
     fn announce_order(&self, name: &String, product: &String) {
-        println!("I have a {} for {}", product, name);
+        println!("I have a {} for {} !", product, name);
     }
 }

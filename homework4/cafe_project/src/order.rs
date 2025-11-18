@@ -7,19 +7,21 @@ use crate::dispatcher::Dispatcher;
     -----------------------------------
 */
 
-pub struct Order {
-    pub client: &String,
-    pub products: &String,
-    pub observer: &Dispatcher,
+pub struct Order<'a> {
+    pub client: &'a str,
+    pub product_type: &'a str,
+    pub base: &'a str,
+    pub toppings: &'a [&'a str],
+    pub observer: Dispatcher,
 }
 
-impl Order {
+impl<'a> Order<'a> {
     /* 
         As in restaurants where they have a little bell to tell waiters 
         that an order is ready
     */
 
-    fn ring_bell(&self) {
-        self.observer.notify();
+    pub fn ring_bell(&self, name: &String, product: &String) {
+        self.observer.notify(name, product);
     }
 }

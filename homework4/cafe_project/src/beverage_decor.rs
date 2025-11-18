@@ -2,67 +2,57 @@
 use crate::beverages::Beverage;
 
 /*
-    ------------------------------
-            Base decorator
-    ------------------------------
-*/
-
-trait BeverageDecorator: Beverage {
-    fn prepare(&self);
-}
-
-/*
     -----------------------------
         Concrete decorators
     -----------------------------
 */
 
-struct MilkDecorator<T: Beverage> {
-    beverage: T
+pub struct MilkDecorator<T: Beverage> {
+    pub beverage: T
 }
 
-impl<T: Beverage> BeverageDecorator for MilkDecorator<T> {
-    fn prepare(&self) {
-        return self.beverage.prepare + " adding milk...";
+impl<T: Beverage> Beverage for MilkDecorator<T> {
+    fn prepare(&self) -> String {
+        format!("{} with milk; ", self.beverage.prepare())
     }
 }
 
-struct SugarDecorator<T: Beverage> {
-    beverage: T
+pub struct SugarDecorator<T: Beverage> {
+    pub beverage: T
 }
 
-impl<T: Beverage> BeverageDecorator for SugarDecorator<T> {
-    fn prepare(&self) {
-        return self.beverage.prepare + " adding sugar...";
+impl<T: Beverage> Beverage for SugarDecorator<T> {
+    fn prepare(&self) -> String {
+        format!("{} with sugar; ", self.beverage.prepare())
     }
 }
 
-struct CinnamonDecorator<T: Beverage> {
+pub struct CinnamonDecorator<T: Beverage> {
     beverage: T
 }
 
-impl<T: Beverage> BeverageDecorator for CinnamonDecorator<T> {
-    fn prepare(&self) {
-        return self.beverage.prepare + " adding cinnamon...";
+impl<T: Beverage> Beverage for CinnamonDecorator<T> {
+    fn prepare(&self) -> String {
+        format!("{} with cinnamon; ", self.beverage.prepare())
     }
 }
 
-struct VanillaDecorator<T: Beverage> {
+pub struct VanillaDecorator<T: Beverage> {
     beverage: T
 }
 
-impl<T: Beverage> BeverageDecorator for VanillaDecorator<T> {
-    fn prepare(&self) {
-        return self.beverage.prepare + " adding vanilla...";
+impl<T: Beverage> Beverage for VanillaDecorator<T> {
+    fn prepare(&self) -> String{
+        format!("{} with vanilla; ", self.beverage.prepare())
     }
 }
 
-struct HoneyDecorator<T: Beverage> {
+pub struct HoneyDecorator<T: Beverage> {
     beverage: T
 }
 
-impl<T: Beverage> BeverageDecorator for HoneyDecorator<T> {
-    fn prepare(&self) {
-        return self.beverage.prepare + " adding honey...";
+impl<T: Beverage> Beverage for HoneyDecorator<T> {
+    fn prepare(&self) -> String {
+        format!("{} with honey; ", self.beverage.prepare())
     }
 }

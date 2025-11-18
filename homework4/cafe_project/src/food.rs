@@ -5,8 +5,8 @@
     ------------------------------
 */
 
-trait Food {
-    fn prepare(&self);
+pub trait Food {
+    fn prepare(&self) -> String;
 }
 
 /*
@@ -15,34 +15,34 @@ trait Food {
     -----------------------------
 */
 
-struct Toast;
+pub struct Toast;
 
 impl Food for Toast {
-    fn prepare(&self) {
-        return "Making toast...";
+    fn prepare(&self) -> String {
+        return "Toast".to_string();
     }
 }
 
-struct Croissant;
+pub struct Croissant;
 
 impl Food for Croissant {
-    fn prepare(&self) {
-        return "Making croissant...";
+    fn prepare(&self) -> String {
+        return "Croissant".to_string();
     }
 }
 
-struct Muffin;
+pub struct Muffin;
 
 impl Food for Muffin {
-    fn prepare(&self) {
-        return "Making muffin...";
+    fn prepare(&self) -> String {
+        return "Muffin".to_string();
     }
 }
 
-struct Donut;
+pub struct Donut;
 
 impl Food for Donut {
-    fn prepare(&self) {
-        return "Making donut...";
+    fn prepare(&self) -> String {
+        return "Donut".to_string();
     }
 }
